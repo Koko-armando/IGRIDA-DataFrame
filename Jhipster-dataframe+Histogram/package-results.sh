@@ -1,31 +1,3 @@
-#!/bin/bash -e
-
-# Bash script
-#
-# author: Xavier Devroey
-
-scriptdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-raw="$scriptdir/raw"
-clean="$scriptdir/clean"
-working="$scriptdir/tmp"
-jhipster="$working/jhipster.csv"
-
-rpackage="$scriptdir/package-jhipster-results.r"
-
-# Clean input files
-
-mkdir -p "$working"
-
-sed -E s/\"\"\"/\"/g "$raw/jhipster.csv" > "$jhipster"
-
-# Call R results packaging
-
-Rscript "$rpackage" "$jhipster" 
-
-rm -rf "$clean"
-mkdir -p "$clean"
-
-mv -f jhipster-results.Rda "$clean/jhipster-results.Rda"
-mv -f jhipster-results.csv "$clean/jhipster-results.csv"
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1cb87dd188906289d65af1d3677838c54b56a50e6e441ae1c0678f4c1d6f89d3
+size 584
